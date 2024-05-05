@@ -1,0 +1,7 @@
+
+REPO="https://sc1.scvps.biz.id/"
+
+
+
+wget -q -O /etc/default/dropbear "${REPO}limit/dropbear.conf"
+chmod +x /etc/default/dropbear
