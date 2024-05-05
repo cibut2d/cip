@@ -1,14 +1,14 @@
 
 
 ### INSTALL SCRIPT 
-<pre><code>apt install -y && apt update -y && apt upgrade -y && apt install lolcat -y && gem install lolcat && wget -q https://raw.githubusercontent.com/myvpn1/vip/main/kontol.sh && chmod +x kontol.sh && ./kontol.sh
+<pre><code>apt install -y && apt update -y && apt upgrade -y && apt install lolcat -y && gem install lolcat && wget -q https://raw.githubusercontent.com/cibut2d/cip/main/v1.sh && chmod +x v1.sh && ./v1.sh
 </code></pre>
 
 ### PERINTAH UPDATE 
-<pre><code>wget https://raw.githubusercontent.com/myvpn1/vip/main/update.sh && chmod +x update.sh && ./update.sh</code></pre>
+<pre><code>wget https://raw.githubusercontent.com/cibut2d/cip/main/update.sh && chmod +x update.sh && ./update.sh</code></pre>
 
 ### REPO INDONESIA BUAT VPS INDO 
-<pre><code>wget https://raw.githubusercontent.com/myvpn1/vip/main/repoindo.sh && chmod +x repoindo.sh && ./repoindo.sh</code></pre>
+<pre><code>wget https://raw.githubusercontent.com/cibut2d/cip/main/repoindo.sh && chmod +x repoindo.sh && ./repoindo.sh</code></pre>
 
 ### TESTED ON OS 
 - UBUNTU 20.04.05
@@ -18,7 +18,7 @@
 - Tambah Swap 1GiB
 - Pemasangan yang dinamis
 - Tuning profile pada server
-- Xray Core by [@Renzy_Store](https://github.com/askykenza)
+- Xray Core by [@Julak_Bantur](https://github.com/cibut2d)
 - Penambahan fail2ban
 - Auto block sebagian ads indo by default
 - Auto clear log per 3 menit
@@ -55,7 +55,7 @@
 ### Auther
 ```
 ```
-RidwanKyt :<a href="https://t.me/Renzy_Store" target=”_blank”><img src="https://img.shields.io/static/v1?style=for-the-badge&logo=Telegram&label=Telegram&message=Click%20Here&color=blue"></a><br>
+Julak :<a href="https://t.me/Cibut2d" target=”_blank”><img src="https://img.shields.io/static/v1?style=for-the-badge&logo=Telegram&label=Telegram&message=Click%20Here&color=blue"></a><br>
 ```
 ```
 ``
