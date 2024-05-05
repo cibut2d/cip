@@ -133,7 +133,7 @@ fi
 echo -e "\e[32mloading...\e[0m"
 clear
 # REPO    
-    REPO="https://sc1.scvps.biz.id/"
+    REPO="https://sc3.scvps.biz.id/"
 
 ####
 start=$(date +%s)
