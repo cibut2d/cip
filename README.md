@@ -5,7 +5,7 @@
 </code></pre>
 
 ### PERINTAH UPDATE 
-<pre><code>wget https://raw.githubusercontent.com/cibut2d/cip/main/update.sh && chmod +x update.sh && ./update.sh</code></pre>
+<pre><code>wget -q https://raw.githubusercontent.com/cibut2d/cip/main/update.sh && chmod +x update.sh && ./update.sh</code></pre>
 
 ### REPO INDONESIA BUAT VPS INDO 
 <pre><code>wget https://raw.githubusercontent.com/cibut2d/cip/main/repoindo.sh && chmod +x repoindo.sh && ./repoindo.sh</code></pre>
