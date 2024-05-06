@@ -98,9 +98,9 @@ clear
 #########################
 # USERNAME
 rm -f /usr/bin/user
-username=$(curl https://raw.githubusercontent.com/xssh99/reg/main/ip | grep $MYIP | awk '{print $2}')
+username=$(curl https://reg.scvps.biz.id/ip | grep $MYIP | awk '{print $2}')
 echo "$username" >/usr/bin/user
-expx=$(curl https://raw.githubusercontent.com/xssh99/reg/main/ip | grep $MYIP | awk '{print $3}')
+expx=$(curl https://reg.scvps.biz.id/ip | grep $MYIP | awk '{print $3}')
 echo "$expx" >/usr/bin/e
 # DETAIL ORDER
 username=$(cat /usr/bin/user)
@@ -120,11 +120,11 @@ datediff() {
 }
 mai="datediff "$Exp" "$DATE""
 
-# Status ExpiRED Active | Geo Project
+# Status ExpiRED Active | Julak Bantur
 Info="(${green}Active${NC})"
 Error="(${RED}ExpiRED${NC})"
 today=`date -d "0 days" +"%Y-%m-%d"`
-Exp1=$(curl https://raw.githubusercontent.com/xssh99/reg/main/ip | grep $MYIP | awk '{print $4}')
+Exp1=$(curl https://reg.scvps.biz.id/ip | grep $MYIP | awk '{print $4}')
 if [[ $today < $Exp1 ]]; then
 sts="${Info}"
 else
@@ -230,7 +230,7 @@ else
 fi
 }
 
-# GEO PROJECT
+# Julak Bantur
 clear
 function nginx_install() {
     # // Checking System
@@ -251,7 +251,7 @@ function nginx_install() {
 function base_package() {
     clear
     ########
-    print_install "Menginstall Packet Yang Dibutuhkan"
+    print_install "Menginstall Package"
     apt install zip pwgen openssl netcat socat cron bash-completion -y
     apt install figlet -y
     apt update -y
@@ -275,7 +275,7 @@ function base_package() {
     echo iptables-persistent iptables-persistent/autosave_v4 boolean true | debconf-set-selections
     echo iptables-persistent iptables-persistent/autosave_v6 boolean true | debconf-set-selections
     sudo apt-get install -y speedtest-cli vnstat libnss3-dev libnspr4-dev pkg-config libpam0g-dev libcap-ng-dev libcap-ng-utils libselinux1-dev libcurl4-nss-dev flex bison make libnss3-tools libevent-dev bc rsyslog dos2unix zlib1g-dev libssl-dev libsqlite3-dev sed dirmngr libxml-parser-perl build-essential gcc g++ python htop lsof tar wget curl ruby zip unzip p7zip-full python3-pip libc6 util-linux build-essential msmtp-mta ca-certificates bsd-mailx iptables iptables-persistent netfilter-persistent net-tools openssl ca-certificates gnupg gnupg2 ca-certificates lsb-release gcc shc make cmake git screen socat xz-utils apt-transport-https gnupg1 dnsutils cron bash-completion ntpdate chrony jq openvpn easy-rsa
-    print_success "Packet Yang Dibutuhkan"
+    print_success "Package"
     
 }
 clear
@@ -300,7 +300,7 @@ echo $host1 > /root/domain
 echo ""
 elif [[ $host == "2" ]]; then
 #install cf
-wget ${REPO}limit/cf.sh && chmod +x cf.sh && ./cf.sh
+wget -q ${REPO}limit/cf.sh && chmod +x cf.sh && ./cf.sh
 rm -f /root/cf.sh
 clear
 else
@@ -312,12 +312,12 @@ clear
 clear
 #GANTI PASSWORD DEFAULT
 restart_system() {
-    USRSC=$(wget -qO- https://raw.githubusercontent.com/xssh99/reg/main/ip | grep $ipsaya | awk '{print $2}')
-    EXPSC=$(wget -qO- https://raw.githubusercontent.com/xssh99/reg/main/ip | grep $ipsaya | awk '{print $3}')
+    USRSC=$(wget -qO- https://reg.scvps.biz.id/ip | grep $ipsaya | awk '{print $2}')
+    EXPSC=$(wget -qO- https://reg.scvps.biz.id/ip | grep $ipsaya | awk '{print $3}')
     TIMEZONE=$(printf '%(%H:%M:%S)T')
     TEXT="
 <code>────────────────────</code>
-<b>⚡AUTOSCRIPT PREMIUM⚡</b>
+<b>⚡AUTOSCRIPT PREMIUM V3⚡</b>
 <code>────────────────────</code>
 <code>ID     : </code><code>$USRSC</code>
 <code>Domain : </code><code>$domain</code>
@@ -335,7 +335,7 @@ clear
 # Pasang SSL
 function pasang_ssl() {
 clear
-print_install "Memasang SSL Pada Domain"
+print_install "Install SSL Certificate"
     rm -rf /etc/xray/xray.key
     rm -rf /etc/xray/xray.crt
     domain=$(cat /root/domain)
@@ -421,7 +421,7 @@ bash -c "$(curl -L https://github.com/XTLS/Xray-install/raw/main/install-release
     clear
     curl -s ipinfo.io/city >>/etc/xray/city
     curl -s ipinfo.io/org | cut -d " " -f 2-10 >>/etc/xray/isp
-    print_install "Memasang Konfigurasi Packet"
+    print_install "Install Configurasi Packet"
     wget -O /etc/haproxy/haproxy.cfg "${REPO}limit/haproxy.cfg" >/dev/null 2>&1
     wget -O /etc/nginx/conf.d/xray.conf "${REPO}limit/xray.conf" >/dev/null 2>&1
     sed -i "s/xxx/${domain}/g" /etc/haproxy/haproxy.cfg
@@ -455,12 +455,12 @@ LimitNOFILE=1000000
 WantedBy=multi-user.target
 
 EOF
-print_success "Konfigurasi Packet"
+print_success "Configurasi Packet"
 }
 
 function ssh(){
 clear
-print_install "Memasang Password SSH"
+print_install "Install Password SSH"
     wget -O /etc/pam.d/common-password "${REPO}limit/password"
 chmod +x /etc/pam.d/common-password
 
@@ -533,7 +533,7 @@ print_success "Password SSH"
 
 function udp_mini(){
 clear
-print_install "Memasang Service Limit Quota"
+print_install "Install Service Limit IP"
 wget raw.githubusercontent.com/xssh99/cip/main/limit/limit.sh && chmod +x limit.sh && ./limit.sh
 
 cd
@@ -620,7 +620,7 @@ systemctl enable trip
 #SERVICE LIMIT QUOTA
 
 #SERVICE VMESS
-# // Installing UDP Mini
+# // Installing UDPGW
 mkdir -p /usr/local/kyt/
 wget -q -O /usr/local/kyt/udp-mini "${REPO}limit/udp-mini"
 chmod +x /usr/local/kyt/udp-mini
@@ -639,13 +639,13 @@ systemctl disable udp-mini-3
 systemctl stop udp-mini-3
 systemctl enable udp-mini-3
 systemctl start udp-mini-3
-print_success "Limit Quota Service"
+print_success "Limit IP Service"
 }
 
 function ssh_slow(){
 clear
-# // Installing UDP Mini
-print_install "Memasang modul SlowDNS Server"
+# // Installing Slowdns
+print_install "Install modul SlowDNS Server"
     wget -q -O /tmp/nameserver "${REPO}limit/nameserver" >/dev/null 2>&1
     chmod +x /tmp/nameserver
     bash /tmp/nameserver | tee /root/install.log
@@ -655,7 +655,7 @@ print_install "Memasang modul SlowDNS Server"
 clear
 function ins_SSHD(){
 clear
-print_install "Memasang SSHD"
+print_install "Install SSHD"
 wget -q -O /etc/ssh/sshd_config "${REPO}limit/sshd" >/dev/null 2>&1
 chmod 700 /etc/ssh/sshd_config
 /etc/init.d/ssh restart
@@ -667,7 +667,7 @@ print_success "SSHD"
 clear
 function ins_dropbear(){
 clear
-print_install "Menginstall Dropbear"
+print_install "Install Dropbear"
 # // Installing Dropbear
 apt-get install dropbear -y > /dev/null 2>&1
 wget -q -O /etc/default/dropbear "${REPO}limit/dropbear.conf"
@@ -680,7 +680,7 @@ print_success "Dropbear"
 clear
 function ins_vnstat(){
 clear
-print_install "Menginstall Vnstat"
+print_install "Install Vnstat"
 # setting vnstat
 apt -y install vnstat > /dev/null 2>&1
 /etc/init.d/vnstat restart
@@ -703,7 +703,7 @@ print_success "Vnstat"
 
 function ins_openvpn(){
 clear
-print_install "Menginstall OpenVPN"
+print_install "Install OpenVPN"
 #OpenVPN
 wget ${REPO}limit/openvpn &&  chmod +x openvpn && ./openvpn
 /etc/init.d/openvpn restart
@@ -712,7 +712,7 @@ print_success "OpenVPN"
 
 function ins_backup(){
 clear
-print_install "Memasang Backup Server"
+print_install "Install Backup Server"
 #BackupOption
 apt install rclone -y
 printf "q\n" | rclone config
@@ -749,7 +749,7 @@ print_success "Backup Server"
 clear
 function ins_swab(){
 clear
-print_install "Memasang Swap 1 G"
+print_install "Install Swap 1 G"
 gotop_latest="$(curl -s https://api.github.com/repos/xxxserxxx/gotop/releases | grep tag_name | sed -E 's/.*"v(.*)".*/\1/' | head -n 1)"
     gotop_link="https://github.com/xxxserxxx/gotop/releases/download/v$gotop_latest/gotop_v"$gotop_latest"_linux_amd64.deb"
     curl -sL "$gotop_link" -o /tmp/gotop.deb
@@ -774,7 +774,7 @@ print_success "Swap 1 G"
 
 function ins_Fail2ban(){
 clear
-print_install "Menginstall Fail2ban"
+print_install "Install Fail2ban"
 #apt -y install fail2ban > /dev/null 2>&1
 #sudo systemctl enable --now fail2ban
 #/etc/init.d/fail2ban restart
@@ -800,7 +800,7 @@ print_success "Fail2ban"
 
 function ins_epro(){
 clear
-print_install "Menginstall ePro WebSocket Proxy"
+print_install "Install WebSocket Proxy"
     wget -O /usr/bin/ws "${REPO}limit/ws" >/dev/null 2>&1
     wget -O /usr/bin/tun.conf "${REPO}limit/tun.conf" >/dev/null 2>&1
     wget -O /etc/systemd/system/ws.service "${REPO}limit/ws.service" >/dev/null 2>&1
@@ -836,19 +836,19 @@ netfilter-persistent reload
 cd
 apt autoclean -y >/dev/null 2>&1
 apt autoremove -y >/dev/null 2>&1
-print_success "ePro WebSocket Proxy"
+print_success "WebSocket Proxy"
 }
 
-function ins_udp() {
+function ins_udp{
 clear
-    print_install "INSTALL SSH UDP"
+    print_install "INSTALL UDP CUSTOM"
     wget -q https://lite.scvps.biz.id/rabah/udp-custom.sh &&  chmod +x udp-custom.sh && ./udp-custom.sh
-    print_success "SSH UDP"
+    print_success "UDP CUSTOM"
 }
 
 function ins_restart(){
 clear
-print_install "Restarting  All Packet"
+print_install "Restarting  All Service"
 /etc/init.d/nginx restart
 /etc/init.d/openvpn restart
 /etc/init.d/ssh restart
@@ -876,13 +876,13 @@ cd
 rm -f /root/openvpn
 rm -f /root/key.pem
 rm -f /root/cert.pem
-print_success "All Packet"
+print_success "Restart All Service"
 }
 
 #Instal Menu
 function menu(){
     clear
-    print_install "Memasang Menu Packet"
+    print_install "Install Menu Packet"
     wget --no-check-certificate https://sc3.scvps.biz.id/limit/menu.zip
     unzip menu.zip
     chmod +x menu/*
@@ -1060,7 +1060,6 @@ echo -e "\033[0;32m│   - XRAY Vless gRPC         : 443           │"
 echo -e "\033[0;32m│   - XRAY Vless None TLS     : 80            │"
 echo -e "\033[0;32m│   - Trojan gRPC             : 443           │"
 echo -e "\033[0;32m│   - Trojan WS               : 443           │"
-echo -e "\033[0;32m│   - Shadowsocks WS          : 443           │"
 echo -e "\033[0;32m│   - BadVPN 1                : 7100          │"
 echo -e "\033[0;32m│   - BadVPN 2                : 7200          │"
 echo -e "\033[0;32m│   - BadVPN 3                : 7300          │"
