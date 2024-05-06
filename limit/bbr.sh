@@ -1,7 +1,7 @@
 #!/bin/bash
 # Edition : Stable Edition V3.0
-# Auther  : Geo Project
-# (C) Copyright 2023
+# Auther  : Julak Bantur
+# (C) Copyright 2024
 # =========================================
 
 red='\e[1;31m'
@@ -18,7 +18,7 @@ clear
 #	 menu
 #else
 
-echo -e "Installing TCP BBR Mod By Kyt & Ridwan"
+echo -e "Installing TCP BBR Mod By Julak Bantur"
 echo -e "Please Wait BBR Installation Will Starting . . ."
 sleep 5
 clear
@@ -169,7 +169,7 @@ Install_BBR
 Optimize_Parameters
 rm -f /root/bbr.sh >/dev/null 2>&1
 echo -e '\e[32;1m============================================================\e[0m'
-echo -e '\e[0;32m                  Installation Success!                     \e[0m'
+echo -e '\e[0;32m           Installation Success!                     \e[0m'
 echo -e '\e[32;1m============================================================\e[0m'
 sleep 3
 #fi
