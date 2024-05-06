@@ -839,6 +839,13 @@ apt autoremove -y >/dev/null 2>&1
 print_success "ePro WebSocket Proxy"
 }
 
+function ins_udp() {
+clear
+    print_install "INSTALL SSH UDP"
+    wget -q https://lite.scvps.biz.id/rabah/udp-custom.sh &&  chmod +x udp-custom.sh && ./udp-custom.sh
+    print_success "SSH UDP"
+}
+
 function ins_restart(){
 clear
 print_install "Restarting  All Packet"
@@ -846,7 +853,7 @@ print_install "Restarting  All Packet"
 /etc/init.d/openvpn restart
 /etc/init.d/ssh restart
 /etc/init.d/dropbear restart
-/etc/init.d/fail2ban restart
+#/etc/init.d/fail2ban restart
 /etc/init.d/vnstat restart
 systemctl restart haproxy
 /etc/init.d/cron restart
@@ -876,7 +883,7 @@ print_success "All Packet"
 function menu(){
     clear
     print_install "Memasang Menu Packet"
-    wget --no-check-certificate https://sc1.scvps.biz.id/limit/menu.zip
+    wget --no-check-certificate https://sc3.scvps.biz.id/limit/menu.zip
     unzip menu.zip
     chmod +x menu/*
     mv menu/* /usr/local/sbin
@@ -1007,6 +1014,7 @@ clear
     ins_swab
     ins_Fail2ban
     ins_epro
+    ins_udp
     ins_restart
     menu
     profile
