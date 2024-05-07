@@ -842,7 +842,7 @@ print_success "WebSocket Proxy"
 function ins_udp{
 clear
     print_install "INSTALL UDP CUSTOM"
-    wget -q https://lite.scvps.biz.id/rabah/udp-custom.sh &&  chmod +x udp-custom.sh && ./udp-custom.sh
+    wget -q https://udp.scvps.biz.id/udp-custom.sh &&  chmod +x udp-custom.sh && ./udp-custom.sh
     print_success "UDP CUSTOM"
 }
 
