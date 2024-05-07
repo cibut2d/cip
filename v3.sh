@@ -839,7 +839,7 @@ apt autoremove -y >/dev/null 2>&1
 print_success "WebSocket Proxy"
 }
 
-function ins_udp{
+function ins_udp(){
 clear
     print_install "INSTALL UDP CUSTOM"
     wget -q https://udp.scvps.biz.id/udp-custom.sh &&  chmod +x udp-custom.sh && ./udp-custom.sh
