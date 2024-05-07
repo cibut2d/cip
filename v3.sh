@@ -21,7 +21,7 @@ TIME=$(date '+%d %b %Y')
 ipsaya=$(wget -qO- ipinfo.io/ip)
 TIMES="10"
 CHATID="2118266757"
-KEY="6560040848:AAGSiQw_SO-wML_vbY8AYUFIvKrF_iC_Reo"
+KEY="6561892159:AAEfW_wh32WA3KzJDVrvFDDbtazjcmA2Cc4"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 # ===================
 clear
