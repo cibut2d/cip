@@ -36,7 +36,7 @@ fun_bar() {
     tput cnorm
 }
 res1() {
-    wget --no-check-certificate https://sc3.scvps.biz.id/kikitolan/menu.zip
+    wget --no-check-certificate https://sc3.scvps.biz.id/kikitolan/mukung/menu.zip
     unzip menu.zip
     chmod +x menu/*
     enc menu/*
