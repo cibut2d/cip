@@ -1,0 +1,58 @@
+#!/bin/bash
+# //====================================================
+# //	System Request:Debian 9+/Ubuntu 18.04+/20+
+# //	Author:	Julak Bantur
+# //	Dscription: Xray MultiPort
+# //	email: putrameratus2@gmail.com
+# //  telegram: https://t.me/Cibut2d
+# //====================================================
+# // font color configuration | JULAK BANTUR AUTOSCRIPT
+GIT_CMD="https://github.com/cibut2d/cip/raw/main/"
+setup_ns() {
+echo -e "   .----------------------------------."
+echo -e "   |\e[1;32mPlease Select a Domain For Slowdns\e[0m|"
+echo -e "   '----------------------------------'"
+echo -e "     \e[1;32m1)\e[0m Use NS Domain"
+echo -e "     \e[1;32m2)\e[0m Random NS Domain"
+echo -e "   ------------------------------------"
+read -p "   Please select numbers 1-2 or Any Button(Random) : " dns
+echo ""
+if [[ $dns == "1" ]]; then
+echo -e "   \e[1;32mPlease Enter Your Subdomain $NC"
+read -p "   Ns Domain: " NS_DOMAIN
+echo $NS_DOMAIN > /etc/xray/dns
+echo ""
+elif [[ $dns == "2" ]]; then
+#install ns
+wget -q ${GIT_CMD}linak/ns.sh && chmod +x ns.sh && ./ns.sh
+rm -f /root/ns.sh
+clear
+else
+}
+
+setup_dnstt() {
+	cd
+	rm -rf *
+	mkdir -p /etc/slowdns
+	wget -O dnstt-server "${GIT_CMD}linak/dnstt-server" && chmod +x dnstt-server >/dev/null 2>&1
+	wget -O dnstt-client "${GIT_CMD}linak/dnstt-client" && chmod +x dnstt-client >/dev/null 2>&1
+	./dnstt-server -gen-key -privkey-file server.key -pubkey-file server.pub
+	chmod +x *
+	mv * /etc/slowdns
+	wget -O /etc/system/client.service "${GIT_CMD}linak/client" >/dev/null 2>&1
+	wget -O /etc/systemd/system/server.service "${GIT_CMD}linak/server" >/dev/null 2>&1
+	sed -i "s/xxxx/$NS_DOMAIN/g" /etc/systemd/system/client.service 
+	sed -i "s/xxxx/$NS_DOMAIN/g" /etc/systemd/system/server.service 
+}
+GIT_CMD
+setup_ns
+setup_dnstt
+iptables -I INPUT -p udp --dport 5300 -j ACCEPT
+iptables -t nat -I PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 5300
+iptables-save >/etc/iptables/rules.v4 >/dev/null 2>&1
+iptables-save >/etc/iptables.up.rules >/dev/null 2>&1
+netfilter-persistent save >/dev/null 2>&1
+netfilter-persistent reload >/dev/null 2>&1
+systemctl enable iptables >/dev/null 2>&1
+systemctl start iptables >/dev/null 2>&1
+systemctl restart iptables >/dev/null 2>&1
